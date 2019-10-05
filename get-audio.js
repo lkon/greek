@@ -5,7 +5,7 @@ const Path = require('path');
 const Axios = require('axios');
 const sources = require('./srs');
 
-const regex = /.+\/(.+)\/1300\/(.+)\.mp3/gm;
+const regex = /.+\/(.+)\/1270\/(.+)\.mp3/gm;
 const subst = `$2_$1.mp3`;
 let index = 0;
 const srcLength = sources.length;
@@ -14,7 +14,7 @@ async function downloadAudio(i) {
     const url = sources[i];
     const fileName = url.replace(regex, subst);
 
-    const path = Path.resolve(__dirname, 'audio', fileName);
+    const path = Path.resolve(__dirname, 'files', fileName);
     const writer = Fs.createWriteStream(path);
 
     const response = await Axios({
